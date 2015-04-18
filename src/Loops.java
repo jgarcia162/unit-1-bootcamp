@@ -4,12 +4,7 @@
 public class Loops {
 
   public static void main (String args[]) {
-    sumOf1to10();
-    sumOf1toN(13);
-    sumOf1to10000();
-    printStringNtimes(5, "Dogs");
-    printStringNtimesConcatenated(5, "Cats");
-    printFirstNFibonacci(12);
+    System.out.println(sumNumbers("I have 101010 dogs"));
   }
 
   // Write a method that prints the numbers 1 through 10 using a loop.
@@ -132,5 +127,37 @@ public class Loops {
     System.out.println("");
     // Modify the method to sum the first N Fibonnaci numbers.
     System.out.println("The sum of the first " + n + " Fibonacci numbers is " + sum);
+  }
+
+  // Given a string, return the sum of the numbers appearing in the string, ignoring all other characters. A number is a series of 1 or more digit chars in a row. (Note: Character.isDigit(char) tests if a char is one of the chars '0', '1', .. '9'. Integer.parseInt(string) converts a string to an int.)
+  public static int sumNumbers(String string){
+    String num="";
+    int sum = 0;
+    for(int i = 0; i < string.length(); i++) {
+      if(Character.isDigit(string.charAt(i))){
+        num+=string.charAt(i);
+        int newNum = Integer.parseInt(num);
+        sum += newNum;
+        num ="";
+      }
+    }
+    return sum;
+  }
+
+  // Given a string, return a string where every appearance of the lowercase word "is" has been replaced with "is not". The word "is" should not be immediately preceeded or followed by a letter -- so for example the "is" in "this" does not count. (Note: Character.isLetter(char) tests if a char is a letter.)
+  public static String isNot(String string){
+    String result="";
+    for(int i = 0; i < string.length(); i++) {
+      
+    }
+
+    return result;
+  }
+  
+  public static void numberPuzzle(){
+   // for(int i = 0; i < ; i++)
+    {
+      
+    }
   }
 }

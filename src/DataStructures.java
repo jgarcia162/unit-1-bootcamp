@@ -1,5 +1,7 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -48,6 +50,8 @@ public class DataStructures {
     ints.add(4);
     ints.add(4);
     mostFrequentElement(ints);
+
+    sortingSentences("I have twelve cats, they all have tails.");
   }
 
   // Write a method called mostFrequentElement that takes an ArrayList of Integers and finds the most frequently occurring element in the ArrayList. At the end print the element and its number of occurrences. If there is more than one such element, any one of them may be printed.
@@ -71,6 +75,7 @@ public class DataStructures {
     System.out.println(mostFreq + " is the most frequent element, it appears " + freq + " times");
   }
 
+  // Write a method called canRentACar that takes the Pod HashMap as a parameter and returns whether or not the Pod can rent a car. If one or more studetns is over 25, it should return true. If no one in the Pod is over 25, it should return false.
   public static boolean canRentACar(HashMap<String,Integer> pod){
     for(String name:pod.keySet()){
       if(pod.get(name) >= 25){
@@ -86,9 +91,57 @@ public class DataStructures {
 
     for(int i= 0; i < string.length; i++) {
       if(string[i].length != n)
-        wordsWithout.add(string[i]);
+        wordsWithout.add(string[i].toString());
     }
     return wordsWithout;
   }
 
+  // Say that a "clump" in an ArrayList is a series of 2 or more adjacent elements of the same value. Write a method that returns the number of clumps in the given ArrayList.
+  public static int howManyClumps(ArrayList<Integer> list){
+    int clumps = 0;
+    for(int i = 1; i <= list.size(); i++) {
+      int current = list.get(i);
+      if (current == list.get(i+1))
+        continue;
+      else if (current == list.get(i+1) && current == list.get(i-1))
+        clumps++;
+      else continue;
+    }
+    return clumps;
+  }
+
+  // Write a method that takes a String sentence, breaks it up into an ArrayList of Strings (one word per ArrayList element), and prints out the words in alphabetical order.
+  public static void sortingSentences(String sentence){
+    String newSentence = "";
+    // Lowercase sentence to avoid capital letter issues
+    sentence = sentence.toLowerCase();
+    //Use for loop with conditional statements to remove punctuation marks
+    for(int i = 0; i < sentence.length(); i++) {
+      if(sentence.charAt(i) != ',' && sentence.charAt(i) != '?'
+                                   && sentence.charAt(i) != '!'
+                                   && sentence.charAt(i) != ';'
+                                   && sentence.charAt(i) != '.'){
+        // Create new sentence without punctuation marks
+        newSentence += sentence.charAt(i);
+      }
+    }
+    // Create new ArrayList for new sentence words
+    ArrayList<String> words = new ArrayList<String>();
+
+    // Split new sentence into words
+    String[] newWords = newSentence.split(" ");
+
+    //Use for loop to add words into ArrayList
+    for(int i = 0; i < newWords.length; i++) {
+      words.add(newWords[i]);
+    }
+
+    // Sort ArrayList alphabetically
+    Collections.sort(words);
+
+    // print sorted ArrayList
+    for(String n : words){
+      System.out.println(n);
+    }
+  }
 }
