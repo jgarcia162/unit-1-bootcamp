@@ -9,7 +9,7 @@ public class Loops {
     sumOf1to10000();
     printStringNtimes(5, "Dogs");
     printStringNtimesConcatenated(5, "Cats");
-    printFirstTenFibonacci();
+    printFirstNFibonacci(12);
   }
 
   // Write a method that prints the numbers 1 through 10 using a loop.
@@ -103,7 +103,7 @@ public class Loops {
 
     System.out.println("The first 10 Fibonacci numbers are: ");
 
-    for(int i = 0; i < 10 - 1; i++){
+    for(int i = 0; i <= 10 - 1; i++){
       System.out.print(f2 + " ");
       f2 = f0 + f1;
       f0 = f1;
@@ -113,5 +113,24 @@ public class Loops {
     System.out.println("");
     // Modify the method to sum the first ten Fibonnaci numbers.
     System.out.println("The sum of the first 10 Fibonacci numbers is " + sum);
+  }
+
+  // Modify the method to take in an int n and sum the first n Fibonnaci numbers.
+  public static void printFirstNFibonacci(int n){
+    int f0 = 0, f1 = 1, f2 = 0;
+    int sum =0;
+
+    System.out.println("The first " + n + " Fibonacci numbers are: ");
+
+    for(int i = 0; i <= n - 1; i++){
+      System.out.print(f2 + " ");
+      f2 = f0 + f1;
+      f0 = f1;
+      f1 = f2;
+      sum += f2;
+    }
+    System.out.println("");
+    // Modify the method to sum the first N Fibonnaci numbers.
+    System.out.println("The sum of the first " + n + " Fibonacci numbers is " + sum);
   }
 }

@@ -10,6 +10,7 @@ public class Methods {
     System.out.println(random(2,30));
   }
 
+  // Write a method called calculateSquare that takes an int as a parameter and returns the square of that integer
   public static int calculateSquare(int x){
     return x * x;
   }

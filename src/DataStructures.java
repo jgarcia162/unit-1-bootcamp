@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -40,10 +41,34 @@ public class DataStructures {
       System.out.println(pod.get(name));
     }
     System.out.println(canRentACar(pod));
+
+    ArrayList<Integer> ints = new ArrayList<Integer>();
+    ints.add(2);
+    ints.add(3);
+    ints.add(4);
+    ints.add(4);
+    mostFrequentElement(ints);
   }
 
+  // Write a method called mostFrequentElement that takes an ArrayList of Integers and finds the most frequently occurring element in the ArrayList. At the end print the element and its number of occurrences. If there is more than one such element, any one of them may be printed.
   public static void mostFrequentElement(ArrayList<Integer> ints ){
+    HashMap<Integer,Integer> nums = new HashMap<Integer, Integer>();
 
+    for(int i = 0; i < ints.size() ; i++) {
+      if(!nums.containsKey(ints.get(i)))
+      nums.put(ints.get(i),1);
+      else if(nums.containsKey(ints.get(i)))
+        nums.put(ints.get(i),nums.get(ints.get(i))+1);
+    }
+    int freq = 0;
+    int mostFreq = 0;
+    for(Integer n : nums.keySet()){
+     if(nums.get(n) > freq){
+       freq = nums.get(n);
+       mostFreq = n;
+     }
+    }
+    System.out.println(mostFreq + " is the most frequent element, it appears " + freq + " times");
   }
 
   public static boolean canRentACar(HashMap<String,Integer> pod){
@@ -54,4 +79,16 @@ public class DataStructures {
     }
     return false;
   }
+
+  // Given an array of strings and an integer, write a method that returns an ArrayList where all the strings of the given length are omitted.
+  public static ArrayList<String> wordsWithoutList(Array[][] string, int n){
+    ArrayList<String> wordsWithout = new ArrayList<String>();
+
+    for(int i= 0; i < string.length; i++) {
+      if(string[i].length != n)
+        wordsWithout.add(string[i]);
+    }
+    return wordsWithout;
+  }
+
 }
